@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Teacher Login</title>
+    <style media="screen">
+         body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #adc5df;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #d7d2cc, #adc5df);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #000000, #111314); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+         }
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Login box styles */
+        .box {
+            width: 400px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .box-header {
+            background-color: #4e8455;
+            padding: 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .box-header h1 {
+            color: #ffffff;
+            margin: 0;
+            font-weight: 700;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .box-body {
+            padding: 40px;
+            background-color: #f5f5f5; /* Background color for the form */
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        /* Input field styles */
+        .box input[type="text"],
+        .box input[type="password"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #c7d7e9;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .box input[type="text"]:focus,
+        .box input[type="password"]:focus {
+            border-color: #4e8455;
+        }
+
+        /* Login button styles */
+        .box input[type="submit"] {
+            width: calc(100% - 40px);
+            background-color: #4e8455;
+            color: #090808;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .box input[type="submit"]:hover {
+            background-color: #7ca84f;
+        }
+
+        /* Footer styles */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            color: #777777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box-header">
+            <h1>Teacher Login Panel</h1>
+        </div>
+        <div class="box-body">
+            <form method="post">
+                {% csrf_token %}
+                {% render_field form.username class="form-control" autocomplete="off" placeholder="Username" %}
+                {% render_field form.password class="form-control" autocomplete="off" placeholder="Password" %}
+                <input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; TEACHER LOGIN.</p>
+    </div>
+</body>
+
+</html>

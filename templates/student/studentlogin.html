@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login</title>
+  <style media="screen">
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #eaeaea; /* Light gray background */
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      width: 300px;
+      padding: 40px;
+      background: #fff; /* White background for the form box */
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .box input[type="text"],
+    .box input[type="password"] {
+      border: 2px solid #3498db; /* Border color blue */
+      background-color: #f9f9f9; /* Light gray background */
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      padding: 10px 15px;
+      width: 100%;
+      outline: none;
+      color: #333; /* Text color */
+      transition: border-color 0.3s;
+      border-radius: 5px;
+    }
+
+    .box input[type="text"]:focus,
+    .box input[type="password"]:focus {
+      border-color: #27ae60; /* Border color green on focus */
+    }
+
+    .box h1 {
+      color: #333; /* Heading color */
+      font-weight: 700;
+    }
+
+    .box input[type="submit"] {
+      background-color: #27ae60; /* Button background color green */
+      color: white; /* Button text color white */
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .box input[type="submit"]:hover {
+      background-color: #2ecc71; /* Button background color lighter green on hover */
+    }
+
+  </style>
+</head>
+<body>
+{% include "exam/navbar.html" %}
+<div class="container">
+  <div class="box" style="background-color: #f0f0f0;"> <!-- Added background color to the form box -->
+    <form method="post">
+      {% csrf_token %}
+      <h1>Student Login Panel</h1>
+      {% if form.errors %}
+        <p class="error">Invalid username or password.</p>
+      {% endif %}
+      {% render_field form.username class="form-control rounded-0" autocomplete="off" placeholder="Username" %}
+      {% render_field form.password class="form-control rounded-0" autocomplete="off" placeholder="Password" %}
+      <input type="submit" class="btn btn-primary btn-lg rounded-0" value="Login">
+    </form>
+  </div>
+</div>
+{% include "exam/footer.html" %}
+</body>
+</html>
